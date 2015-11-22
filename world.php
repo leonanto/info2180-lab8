@@ -18,7 +18,7 @@ print $results;
 if($LOOKUP == null && $ALL == 'false'){
   return 0;
 }
-elseif($ALL == 'true' && $FORMAT =='xml' || $LOOKUP != null){
+elseif($ALL == 'true' && $FORMAT =='xml'){
   $string='<?xml version="1.0" encoding="utf-8"?> <ul> <countrydata>';
   while ( $row = mysql_fetch_array($results)) {
     $string.='<li>';
@@ -26,7 +26,7 @@ elseif($ALL == 'true' && $FORMAT =='xml' || $LOOKUP != null){
     $string.='<name>';
     $string.=$row["name"];
     $string.='</name>';
-    $string.='<ruler> ';
+    $string.='<ruler>, ';
     $string.=$row["head_of_state"];
     $string.='</ruler>';
     $string.='</country>';
@@ -39,13 +39,11 @@ elseif($ALL == 'true' && $FORMAT =='xml' || $LOOKUP != null){
   echo $xml -> asXML();
   //echo $string;
 }
-// else{
-//   //$LOOKUP = $_REQUEST['lookup'];
-//   //$results = mysql_query("SELECT * FROM countries WHERE name LIKE '%$LOOKUP%';");
-//   while ($row = mysql_fetch_array($results)) {
-//     ?>
-//     <li> <?php echo $row["name"]; ?>, ruled by <?php echo $row["head_of_state"]; ?> </li>
-//     <?php
-//   }
-// }
+ else{
+   while ($row = mysql_fetch_array($results)) {
+     ?>
+     <li> <?php echo $row["name"]; ?>, ruled by <?php echo $row["head_of_state"]; ?> </li>
+     <?php
+   }
+}
 ?>
