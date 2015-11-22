@@ -20,8 +20,8 @@ window.onload = function(){
             } 
         });
         function showResults(data){
-            alert(data.responseXML);
-            //var div = document.getElementById("result");
-            //div.innerHTML = div.innerHTML + data.responseText; 
+            alert(data.responseText);
+            var div = document.getElementById("result");
+            div.innerHTML = div.innerHTML + data.responseText; 
         }
 };

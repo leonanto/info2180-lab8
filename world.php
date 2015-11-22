@@ -20,13 +20,13 @@ if($LOOKUP == null && $ALL == 'false'){
 }
 elseif($ALL == 'true' && $FORMAT =='xml' || $LOOKUP != null){
   $string='<?xml version="1.0" encoding="utf-8"?> <ul> <countrydata>';
-  while ( $row = mysql_fetch_array($results) ) {
+  while ( $row = mysql_fetch_array($results)) {
     $string.='<li>';
     $string.='<country>';
     $string.='<name>';
     $string.=$row["name"];
     $string.='</name>';
-    $string.='<ruler>';
+    $string.='<ruler> ';
     $string.=$row["head_of_state"];
     $string.='</ruler>';
     $string.='</country>';
